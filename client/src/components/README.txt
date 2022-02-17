@@ -1,0 +1,1 @@
+Use this foldor for site elements, e.g. buttons, navbar, menus, etc.
