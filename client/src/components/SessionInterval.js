@@ -1,13 +1,22 @@
 import React from 'react'
 
-function SessionInterval(props) {
-  return (
-    <section>
-        <button>Down</button>
-        <p>{props.sessionInterval}</p>
-        <button>Up</button>
-    </section>
-  )
-}
+const Sessioninterval = (props) => {
+  const {
+    sessionLength,
+    reduceSessionOneMinute,
+    increaseSessionOneMinute,
+  } = props;
 
-export default SessionInterval
+
+  return (
+    <div>
+      <p id="session-label">PomoSession</p>
+      <p id='session-length'>{sessionLength}</p>
+
+      <button id='session-reduce' onClick={reduceSessionOneMinute}>-</button>
+      <button id='session-increase' onClick={increaseSessionOneMinute}>+</button>
+    </div>
+  )
+};
+
+export default Sessioninterval

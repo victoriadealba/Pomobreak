@@ -1,13 +1,21 @@
 import React from 'react'
 
-function BreakInterval(props) {
+const Breakinterval = (props) => {
+  const{
+    breakLength,
+    increaseBreakOneMinute,
+    reduceBreakOneMinute,
+  } = props;
+  
   return (
-      <section>
-          <button>Down</button>
-          <p>{props.breakInterval}</p>
-          <button>Up</button>
-      </section>
-  )
-}
+    <div>
+      <p id="break-label">PomoBreak</p>
+      <p id='break-length'>{breakLength}</p>
 
-export default BreakInterval
+      <button id='break-reduce' onClick={reduceBreakOneMinute}>-</button>
+      <button id='break-increase' onClick={increaseBreakOneMinute}>+</button>
+    </div>
+  )
+};
+
+export default Breakinterval
