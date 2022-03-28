@@ -6,12 +6,13 @@ const Timer = (props) => {
         clickStartStop,
         startButtonLabel,
         timeLeft,
+        clockFormat,
     } = props;
 
   return (
     <div>
         <p id='timer-label'>{timerLabel}</p> 
-        {timeLeft}
+        {clockFormat(timeLeft)}
         <button id='start-stop' onClick={clickStartStop}>
             {startButtonLabel}
         </button>
