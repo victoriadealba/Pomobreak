@@ -12,6 +12,28 @@ function App () {
   const [timeLeft, setTimeLeft] = useState(sessionLength);
   const [currIntervalType, setCurrIntervalType] = useState('Session');    //For Session or Break, start in session
 
+  //Formatting Clock Display from ss to hr:mm:ss
+  const clockFormat = (seconds) => {
+
+    let clockHours = Math.floor(seconds/3600);
+    let clockMinute = Math.floor((seconds % 3600) / 60);
+    let clockSecond = Math.floor(seconds % 60);
+
+    let res = "";
+
+    //Need to account single digits requiring a leading 0
+      //Display Hrs:MM:SS in that order
+
+
+    if (clockHours > 0) {
+      res += "" + clockHours + ":" + (clockMinute < 10 ? "0" : "");
+    }
+    res += "" + clockMinute + ":" + (clockSecond < 10 ? "0" : "");
+    res += "" + clockSecond;
+
+  return res;
+}
+  
   //Change the time left when the session changes
   useEffect(() => {
     setTimeLeft(sessionLength);
@@ -87,7 +109,7 @@ function App () {
                       setTimeLeft(sessionLength);
                   }
               })
-          }, 1000);    //<-- SET ME BACK TO 1000 AFTER TESTING
+          }, 100);    //<-- SET ME BACK TO 1000 AFTER TESTING
           setIntervalLength(currIntervalLength);
       }
   }
@@ -112,7 +134,8 @@ function App () {
     <BreakInterval
     breakLength={breakLength}
     reduceBreakOneMinute={reduceBreakOneMinute}
-    increaseBreakOneMinute={increaseBreakOneMinute} />
+    increaseBreakOneMinute={increaseBreakOneMinute}
+    clockFormat={clockFormat} />
 
     <Timer 
     sessionLength={sessionLength}
@@ -120,12 +143,14 @@ function App () {
     timerLabel={currIntervalType}
     clickStartStop={clickStartStop}
     timeLeft={timeLeft}
-    startButtonLabel={timerStarted? 'Stop' : 'Start'} />
+    startButtonLabel={timerStarted? 'Stop' : 'Start'}
+    clockFormat={clockFormat} />
 
     <Sessioninterval
     sessionLength={sessionLength}
     reduceSessionOneMinute={reduceSessionOneMinute}
-    increaseSessionOneMinute={increaseSessionOneMinute} />
+    increaseSessionOneMinute={increaseSessionOneMinute}
+    clockFormat={clockFormat} />
 
     <button id="reset-button" onClick={clickReset}>Reset</button>
   </div>
