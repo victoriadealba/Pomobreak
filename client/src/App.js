@@ -152,7 +152,7 @@ function App () {
     increaseSessionOneMinute={increaseSessionOneMinute}
     clockFormat={clockFormat} />
 
-    <button id="reset-button" onClick={clickReset}>Reset</button>
+    <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button>
   </div>
   
 }
