@@ -38,6 +38,19 @@ it('Timer Label Test: Renders as Session', () => {
     expect(label.text()).toEqual('Session');
 })
 
+it('Timer Label Test: Renders as Break After Working Session', () => {
+    const wrapper = mount(<App />);
+    const startButton = wrapper.find('#start-stop');
+    const timerLabel = wrapper.find('#timer-label');
+    jest.useFakeTimers();
+    startButton.simulate('click');
+    act(() => {
+        jest.advanceTimersByTime(100 * 60 * 26); // <= CHANGE ME TO 1000 WHEN REVERTING TO NORMAL TIMER
+    })
+    jest.useRealTimers();
+    expect(timerLabel).toEqual('Break');
+})
+
 it('Session Length Test: Defaults to 25:00', () => {
     const wrapper = mount(<App />);
     const label = wrapper.find('#session-length');
