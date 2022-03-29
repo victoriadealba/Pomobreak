@@ -131,28 +131,31 @@ function App () {
   }
 
   return <div className='App'>
+    
     <BreakInterval
     breakLength={breakLength}
     reduceBreakOneMinute={reduceBreakOneMinute}
     increaseBreakOneMinute={increaseBreakOneMinute}
     clockFormat={clockFormat} />
+  
+  <Sessioninterval
+    sessionLength={sessionLength}
+    reduceSessionOneMinute={reduceSessionOneMinute}
+    increaseSessionOneMinute={increaseSessionOneMinute}
+    clockFormat={clockFormat} />
 
-    <Timer 
+<Timer 
     sessionLength={sessionLength}
     breakLength={breakLength}
     timerLabel={currIntervalType}
     clickStartStop={clickStartStop}
     timeLeft={timeLeft}
     startButtonLabel={timerStarted? 'Stop' : 'Start'}
-    clockFormat={clockFormat} />
-
-    <Sessioninterval
-    sessionLength={sessionLength}
-    reduceSessionOneMinute={reduceSessionOneMinute}
-    increaseSessionOneMinute={increaseSessionOneMinute}
-    clockFormat={clockFormat} />
-
-    <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button>
+    clockFormat={clockFormat}
+     />
+   <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button>  
+   
+ 
   </div>
   
 }
