@@ -12,7 +12,7 @@ const Timer = (props) => {
   return (
     <div>
         <p id='timer-label'>{timerLabel}</p> 
-        {clockFormat(timeLeft)}
+        <p id='time-left'>{clockFormat(timeLeft)}</p>
         <button id='start-stop' onClick={clickStartStop}>
             {startButtonLabel}
         </button>
