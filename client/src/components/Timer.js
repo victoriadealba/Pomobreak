@@ -11,8 +11,8 @@ const Timer = (props) => {
 
   return (
     <div>
-        <p id='timer-label'>{timerLabel}</p> 
-        <p id='time-left'>{clockFormat(timeLeft)}</p>
+        <h2 id='timer-label'>{timerLabel}</h2> 
+        <h3 id='time-left'>{clockFormat(timeLeft)}</h3>
         <button class= "ui button start" id='start-stop' onClick={clickStartStop}>
             {startButtonLabel}
         </button>
