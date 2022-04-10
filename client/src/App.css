@@ -1,28 +1,83 @@
 body {
-  background-color: #f1f08d;
+  background-color:#F6F6F6;
 }
 
-
-.timecontainer{
-  width: 100vw;
-  height: 100vh;
-  margin: 0; 
-  padding: 0; 
+main{
   display: flex; 
-  align-items: center; 
+  flex-direction: column; 
+  height: 90vh; 
   justify-content: center;
+  align-items: center;
+}
+h2{
+  padding-top:100px;
+  font-size: 4rem;
+  color: #98DED9;
+  -webkit-text-stroke: 1px #161D6F;
+   font-family: Impact, fantasy;
+ }
+ h4{
+   text-align: center;
+   font-size: 2rem;
+   color:white ;
+   -webkit-text-stroke: 1px #161D6F;
+   font-family: Impact, fantasy;
+  
+  
+ }
+ h3{
+   font-size: 40px;
+   color: #161D6F; 
+  
+ }
+ h5{
+   font-size: 25px;
+ 
+ }
+
+.intervals{
+  display: flex; 
+  margin: 0 250px; 
+  padding-top: 0.05%;
+  align-items: center;
+}
+.interval-container{
+ 
+  display:flex;
+  margin:1px;
+
+ 
 }
 
+.timer-container{
+  border: 3px solid #161D6F;
+  background-color:  #C7FFD8;
+  margin-top: 40px; 
+  border-radius: 25px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.50);
+}
+.timer-button-pos{
+  text-align: center;
+  display:flex;
+  flex-direction:row;
+  width:300px;
+  height:80px;
+  padding: 5px 12px;
+}
 
 
 .ui.button{
   width: 70px;
   height: 70px;
   padding: 0;
-  background:rgb(98, 52, 223);
+  background:#98DED9;
   color: rgb(255, 255, 255); 
   border-radius: 35px;
   font-size: 20px;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
   font-weight: 700;
   line-height: 50px;
   text-transform: uppercase;
@@ -31,11 +86,13 @@ body {
   width: 70px;
   height: 70px;
   padding: 0;
-  background:rgb(178, 45, 255);
+  background:#98DED9;
   color: rgb(255, 255, 255); 
   border-radius: 35px;
   font-size: 20px;
   font-weight: 700;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
   line-height: 50px;
   text-transform: uppercase;
 }
@@ -44,8 +101,8 @@ body {
 .ui.button.plus {
   width: 70px;
   height: 70px;
-  padding: 0;
-  background:rgb(46, 224, 255);
+  padding:0;
+  background:#161D6F;
   color: rgb(255, 255, 255); 
   border-radius: 35px;
   font-size: 50px;

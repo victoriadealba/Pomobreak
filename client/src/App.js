@@ -10,7 +10,7 @@ function App () {
   const [sessionLength, setSessionLength] = useState(1500)
   const [intervalLength, setIntervalLength] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
-  const [currIntervalType, setCurrIntervalType] = useState('Session');    //For Session or Break, start in session
+  const [currIntervalType, setCurrIntervalType] = useState('PomoSession');    //For Session or Break, start in session
 
   //Formatting Clock Display from ss to hr:mm:ss
   const clockFormat = (seconds) => {
@@ -69,7 +69,9 @@ function App () {
   //Timer implementation, combine session and break
   //Timer starts if the intervallength is not null
   const timerStarted = intervalLength != null;
-
+ //Handle Reset Button
+  //Handle Reset Button
+  
   const clickStartStop = () => {
       if(timerStarted) {
           //If in started, stop timer:
@@ -97,15 +99,15 @@ function App () {
                   //If session:
                       //Switch to break
                           //setTimeLeft to breakLength
-                  if(currIntervalType === 'Session') {
-                      setCurrIntervalType('Break');
+                  if(currIntervalType === 'PomoSession') {
+                      setCurrIntervalType('PomoBreak');
                       setTimeLeft(breakLength);
                   }
                   //Switch to break:
                       //Switch to session
                           //setTimeLeft to sessionLength
-                  else if(currIntervalType === 'Break') {
-                      setCurrIntervalType('Session');
+                  else if(currIntervalType === 'PomoBreak') {
+                      setCurrIntervalType('PomoSession');
                       setTimeLeft(sessionLength);
                   }
               })
@@ -114,49 +116,55 @@ function App () {
       }
   }
 
-  //Handle Reset Button
   const clickReset = () => {
     //TODO
     //set intervalLength to null
     //reset session length to 25 minutes,=
     //reset break length to 5 minutes
     //reset timer to 25 minutes (initial values)
-
     clearInterval(intervalLength);
     setIntervalLength(null);
-    setCurrIntervalType('Session');
+    setCurrIntervalType('PomoSession');
     setSessionLength(60 * 25);
     setBreakLength(60 * 5);
     setTimeLeft(60 * 25);
   }
 
-  return <div className='App'>
-    <div className = 'timecontainer'>
-    <BreakInterval
-    breakLength={breakLength}
-    reduceBreakOneMinute={reduceBreakOneMinute}
-    increaseBreakOneMinute={increaseBreakOneMinute}
-    clockFormat={clockFormat} />
+  return (
+    <main>
+      <h2>PomoBreak</h2>
+      <section className='interval-container'>
+      <BreakInterval
+      breakLength={breakLength}
+      reduceBreakOneMinute={reduceBreakOneMinute}
+      increaseBreakOneMinute={increaseBreakOneMinute}
+      clockFormat={clockFormat} />
 
-  <Sessioninterval
-    sessionLength={sessionLength}
-    reduceSessionOneMinute={reduceSessionOneMinute}
-    increaseSessionOneMinute={increaseSessionOneMinute}
-    clockFormat={clockFormat} />
+    <Sessioninterval
+      sessionLength={sessionLength}
+      reduceSessionOneMinute={reduceSessionOneMinute}
+      increaseSessionOneMinute={increaseSessionOneMinute}
+      clockFormat={clockFormat} />
 
-<Timer 
-    sessionLength={sessionLength}
-    breakLength={breakLength}
-    timerLabel={currIntervalType}
-    clickStartStop={clickStartStop}
-    timeLeft={timeLeft}
-    startButtonLabel={timerStarted? 'Stop' : 'Start'}
-    clockFormat={clockFormat}
-     />
-   <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button> 
+      </section>
+      <Timer
+   sessionLength={sessionLength}
+   breakLength={breakLength}
+   timerLabel={currIntervalType}
+   clickStartStop={clickStartStop}
+   timeLeft={timeLeft}
+   startButtonLabel={timerStarted? 'Stop' : 'Start'}
+   clockFormat={clockFormat}
+   clickReset={clickReset}
+    />
 
-    </div>
-  </div>
+ 
+
+
+
+     
+    </main>
+  );
   
 }
 
