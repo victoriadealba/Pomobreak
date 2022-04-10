@@ -4,7 +4,7 @@ import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
 import Timer from './components/Timer';
 import LongActivityGenerator from "./components/LongActivityGenerator";
-import shortActivtyGenerator from "./components/ShortActivityGenerator";
+import ShortActivtyGenerator from "./components/ShortActivityGenerator";
 
 function App () {
 
