@@ -13,9 +13,25 @@ function App () {
   const [timeLeft, setTimeLeft] = useState(sessionLength);
   const [currIntervalType, setCurrIntervalType] = useState('Session');    //For Session or Break, start in session
 
-  //Long activity generator
-  const [activity, setActivity] = useState(null);
-  var activities = ["one one one", "two two two", "three three three", "four four four", "five five five"];
+  // Long activity generator
+  const [longActivity, setLongActivity] = useState(null);
+  var longActivities = [
+    "Let's flutter away and decorate our study space! Grab some sheets of paper and string Follow this link to make a group of butterflies. Copy and paste:  https://www.redtedart.com/easy-paper-butterfly/",
+    "\"Think of the perfect day, design a story board illustrating how it would happen! Copy and paste: https://www.wikihow.com/Draw-Storyboards\"",
+    "\"Scavenger Hunt! Go outside or around your house and take a picture of: Something Shiny, Something Red, An interesting view of the Sky, The biggest Tree, Something beautiful, The funniest thing\"",
+    "\"Rap Battle! Make a rap with the following words: Rat, Fun, Distance, copy and paste this link and go crazy!  https://rapscript.net/words/\"",
+    "\"Nature Scavenger Hunt! Go find: something fuzzy, something noisy, a chewed leaf, a stick, something you think is a treasure, two pieces of man-made litter, two different types of flowers or leaves\"",
+    "\"Yoga Time! Let's stretch, go outside or do it inside and see if you're up for the challenge! How bendy can you get? Copy and paste: https://www.youtube.com/watch?v=X655B4ISakg\"",
+    "Are you the next MasterChef? Ask your parent to help you cook up a fun snack! Recipe ideas: ",
+    "RIDDLE ME THIS! Time to put your mind to the test... Are you a Genius? Copy and paste: https://www.youtube.com/watch?v=6WZ5DCd3_4o",
+    "DANCE BATTLE! Can you do them all? Copy and paste: 1) https://www.youtube.com/watch?v=tz2OnrmzzHE 2) https://www.youtube.com/watch?v=Hf9MtIOZEzU&t=5s 3) https://www.youtube.com/watch?v=aXgy3kE1NIg",
+    "Close your eyes and listen to this video for a guided meditation. Can you be the next Yoda? Copy and paste: https://www.youtube.com/watch?v=DWOHcGF1Tmc",
+    "Let's do a DRINKING CHALLENGE! How long will it take you to drink 3 glasses of water? After the water lie down and copy and paste this link: https://www.youtube.com/watch?v=mV9BBR1RoGg",
+    "Take a power nap you deserve it! Or go watch an episode of your favorite TV show ",
+    "Airplane Competition! See which one could fly further... Let's make multiple types and test it out: Copy and paste: 1) https://allfortheboys.com/move-over-paper-airplanes/  2) https://www.youtube.com/watch?v=r9ReNKZiZNc",
+    "\"Let's make a Vision Board! Draw pictures of your biggest dreams and put it together in a collage! How to make a vision board, copy and paste: https://www.youtube.com/watch?v=9kDS24W8VRE  \"",
+    "Picture your dream and write out the dream as if it's already yours. Create a story of you living a day out in that dream or write a day in your life living your dream life!"
+  ];
 
   //Formatting Clock Display from ss to hr:mm:ss
   const clockFormat = (seconds) => {
@@ -137,8 +153,8 @@ function App () {
   }
 
   //Generate Random activity
-  const generate = () => {
-    setActivity(activities[Math.floor(Math.random()*activities.length)]);
+  const generateLongActivity = () => {
+    setLongActivity(longActivities[Math.floor(Math.random()*longActivities.length)]);
   }
 
   return <div className='App'>
@@ -155,11 +171,6 @@ function App () {
     increaseSessionOneMinute={increaseSessionOneMinute}
     clockFormat={clockFormat} />
 
-  <LongActivityGenerator 
-   generate={generate}
-   activity={activity}
-  />
-
 <Timer 
     sessionLength={sessionLength}
     breakLength={breakLength}
@@ -172,7 +183,13 @@ function App () {
    <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button> 
 
     </div>
+
+    <LongActivityGenerator 
+   generate={generateLongActivity}
+   activity={longActivity}
+    />
   </div>
+  
   
 }
 
