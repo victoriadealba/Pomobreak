@@ -183,10 +183,17 @@ function App () {
     setTimeLeft(60 * 25);
   }
 
-  //Generate Random activity
+  //Generate Random Long activity
   const generateLongActivity = () => {
     setLongActivity(longActivities[Math.floor(Math.random()*longActivities.length)]);
   }
+
+  //Generate Random Long activity
+  const generateShortActivity = () => {
+    setShortActivity(shortActivities[Math.floor(Math.random()*shortActivities.length)]);
+  }
+
+
 
   return <div className='App'>
     <div className = 'timecontainer'>
