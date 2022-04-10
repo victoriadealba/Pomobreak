@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
-import Timer from './components/Timer'
+import Timer from './components/Timer';
+import LongActivityGenerator from "./components/LongActivityGenerator";
 
 function App () {
 
@@ -12,6 +13,10 @@ function App () {
   const [timeLeft, setTimeLeft] = useState(sessionLength);
   const [currIntervalType, setCurrIntervalType] = useState('Session');    //For Session or Break, start in session
 
+  //Long activity generator
+  const [activity, setActivity] = useState(null);
+  var activities = ["one one one", "two two two", "three three three", "four four four", "five five five"];
+
   //Formatting Clock Display from ss to hr:mm:ss
   const clockFormat = (seconds) => {
 
@@ -20,6 +25,7 @@ function App () {
     let clockSecond = Math.floor(seconds % 60);
 
     let res = "";
+
 
     //Need to account single digits requiring a leading 0
       //Display Hrs:MM:SS in that order
@@ -130,6 +136,11 @@ function App () {
     setTimeLeft(60 * 25);
   }
 
+  //Generate Random activity
+  const generate = () => {
+    setActivity(activities[Math.floor(Math.random()*activities.length)]);
+  }
+
   return <div className='App'>
     <div className = 'timecontainer'>
     <BreakInterval
@@ -143,6 +154,11 @@ function App () {
     reduceSessionOneMinute={reduceSessionOneMinute}
     increaseSessionOneMinute={increaseSessionOneMinute}
     clockFormat={clockFormat} />
+
+  <LongActivityGenerator 
+   generate={generate}
+   activity={activity}
+  />
 
 <Timer 
     sessionLength={sessionLength}
