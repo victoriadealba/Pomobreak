@@ -39,9 +39,20 @@ h2{
    margin:15px;
   
  }
+
  h5{
    font-size: 25px;
    margin: 10px;
+ }
+
+ h7 {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-left: 60px;
+  margin-right: 60px;
+  color: #161D6F ;
+  font-family: Impact, fantasy;
+  overflow-wrap: normal;
  }
 
 .intervals{
@@ -209,4 +220,28 @@ h2{
   line-height: 30px;
   display:inline-block;
   text-transform: uppercase;
+}
+
+.hideTimer {
+  font-size: 60px;
+  background-color: #C7FFD8;
+  color: #161D6F; 
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-color: #161D6F;
+  text-align: center;
+}
+
+.hideTimer:focus {
+  font-size: 60px;
+  background-color: #C7FFD8;
+  color: #C7FFD8; 
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-color: #161D6F;
+  text-align: center;
 }

@@ -16,16 +16,17 @@ const Timer = (props) => {
     <section>
        <section class = 'timer-container'>
       
-      <h4 id='timer-label'>{timerLabel}</h4> 
-      <h3 id='time-left'>{clockFormat(timeLeft)}</h3>
+      <h4 id='timer-label'>{timerLabel}</h4>
+      <button class="hideTimer" id='time-left'>{clockFormat(timeLeft)}</button>
+
+      <h7> Click the timer to hide it </h7>
      
       <button class= "ui button start" id='start-stop' onClick={clickStartStop}>
           {startButtonLabel}
       </button>
       <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button>
-      <button class = "ui button hide" id="hide-button" onClick={clickHideTimer}>Hide</button>      
+      <button class = "ui button hide" id="hide-button" onClick={clickHideTimer}>Show</button>      
       
-     
      </section>
 
 
