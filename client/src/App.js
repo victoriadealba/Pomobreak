@@ -3,8 +3,8 @@ import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
 import Timer from './components/Timer';
-import LongActivityGenerator from "./components/longActivityGenerator";
-import ShortActivtyGenerator from "./components/shortActivityGenerator";
+import LongActivityGenerator from "./components/LongActivityGenerator";
+import ShortActivtyGenerator from "./components/ShortActivityGenerator";
 
 function App () {
 
