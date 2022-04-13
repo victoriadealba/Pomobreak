@@ -3,8 +3,8 @@ import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
 import Timer from './components/Timer';
-import LongActivityGenerator from "./components/LongActivityGenerator";
-import ShortActivtyGenerator from "./components/ShortActivityGenerator";
+import LongActivityGenerator from "./components/longActivityGenerator";
+import ShortActivtyGenerator from "./components/shortActivityGenerator";
 
 function App () {
 
@@ -195,39 +195,43 @@ function App () {
 
 
 
-  return <div className='App'>
-    <div className = 'timecontainer'>
-    <BreakInterval
-    breakLength={breakLength}
-    reduceBreakOneMinute={reduceBreakOneMinute}
-    increaseBreakOneMinute={increaseBreakOneMinute}
-    clockFormat={clockFormat} />
-
-  <Sessioninterval
-    sessionLength={sessionLength}
-    reduceSessionOneMinute={reduceSessionOneMinute}
-    increaseSessionOneMinute={increaseSessionOneMinute}
-    clockFormat={clockFormat} />
-
-<Timer 
-    sessionLength={sessionLength}
-    breakLength={breakLength}
-    timerLabel={currIntervalType}
-    clickStartStop={clickStartStop}
-    timeLeft={timeLeft}
-    startButtonLabel={timerStarted? 'Stop' : 'Start'}
-    clockFormat={clockFormat}
-     />
-   <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button> 
-
-    </div>
-
-    <LongActivityGenerator 
+  return (
+    <main>
+      <h2>PomoBreak</h2>
+      <section className='interval-container'>
+      <BreakInterval
+      breakLength={breakLength}
+      reduceBreakOneMinute={reduceBreakOneMinute}
+      increaseBreakOneMinute={increaseBreakOneMinute}
+      clockFormat={clockFormat} />
+      
+      <LongActivityGenerator 
    generate={generateLongActivity}
    activity={longActivity}
     />
-  </div>
-  
+ 
+
+    <Sessioninterval
+      sessionLength={sessionLength}
+      reduceSessionOneMinute={reduceSessionOneMinute}
+      increaseSessionOneMinute={increaseSessionOneMinute}
+      clockFormat={clockFormat} />
+      </section>
+      <Timer
+   sessionLength={sessionLength}
+   breakLength={breakLength}
+   timerLabel={currIntervalType}
+   clickStartStop={clickStartStop}
+   timeLeft={timeLeft}
+   startButtonLabel={timerStarted? 'Stop' : 'Start'}
+   clockFormat={clockFormat}
+   clickReset={clickReset}
+    />
+
+
+
+    </main>
+  )
   
 }
 

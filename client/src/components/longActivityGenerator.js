@@ -6,9 +6,9 @@ const LongActivityGenerator = (props) => {
 
     return (
         <div>
-            <button onClick={ generate }>generate</button>
-            <h2>text:</h2>
-            <pre>{ activity }</pre>
+            <button onClick={ generate } class = 'ui button activity' >generate</button>
+            <p class ='longact-text'>{activity}</p>
+           
         </div>
     );
 };

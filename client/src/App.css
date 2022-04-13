@@ -4,14 +4,21 @@ body {
 
 main{
   display: flex; 
-  flex-direction: column; 
+  flex-direction:column;
   height: 90vh; 
   justify-content: center;
   align-items: center;
+  margin: 75px;
 }
 h2{
-  padding-top:100px;
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
   font-size: 4rem;
+  object-position: 0%;
   color: #98DED9;
   -webkit-text-stroke: 1px #161D6F;
    font-family: Impact, fantasy;
@@ -19,6 +26,7 @@ h2{
  h4{
    text-align: center;
    font-size: 2rem;
+   margin:auto;
    color:white ;
    -webkit-text-stroke: 1px #161D6F;
    font-family: Impact, fantasy;
@@ -28,11 +36,12 @@ h2{
  h3{
    font-size: 40px;
    color: #161D6F; 
+   margin:15px;
   
  }
  h5{
    font-size: 25px;
- 
+   margin: 10px;
  }
 
 .intervals{
@@ -44,34 +53,32 @@ h2{
 .interval-container{
  
   display:flex;
-  margin:1px;
-
+  flex-direction: row;
+  margin:20px;
  
 }
-
+.longact-text {
+  color: orange; 
+}
 .timer-container{
   border: 3px solid #161D6F;
   background-color:  #C7FFD8;
-  margin-top: 40px; 
-  border-radius: 25px;
-  width: 500px;
+  margin-bottom: 0px;
+  margin-top: 20%;
+  border-radius: 20px;
+  width: 400px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.50);
 }
-.timer-button-pos{
-  text-align: center;
-  display:flex;
-  flex-direction:row;
-  width:300px;
-  height:80px;
-  padding: 5px 12px;
-}
+
 
 
 .ui.button{
   width: 70px;
   height: 70px;
-  padding: 0;
+  display: inline-block;
+  margin: 0 15px;
+  padding:0vh;
   background:#98DED9;
   color: rgb(255, 255, 255); 
   border-radius: 35px;
@@ -79,24 +86,44 @@ h2{
   -webkit-text-stroke: 1px #161D6F;
   font-family: Impact, fantasy;
   font-weight: 700;
-  line-height: 50px;
-  text-transform: uppercase;
-}
-.ui.button.start{
-  width: 70px;
-  height: 70px;
-  padding: 0;
-  background:#98DED9;
-  color: rgb(255, 255, 255); 
-  border-radius: 35px;
-  font-size: 20px;
-  font-weight: 700;
-  -webkit-text-stroke: 1px #161D6F;
-  font-family: Impact, fantasy;
   line-height: 50px;
   text-transform: uppercase;
 }
 
+.ui.button.start{
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  margin: 0 15px;
+  margin-bottom: 20px;
+  padding: 0;
+  background:#98DED9;
+  color: rgb(255, 255, 255); 
+  border-radius: 35px;
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+.ui.button.activity{
+  width: 100px;
+  height: 100px;
+  padding:0vh;
+  margin-top:15%;
+  margin-bottom: 15%;
+ 
+  background:#98DED9;
+  color: rgb(255, 255, 255); 
+  border-radius: 50px;
+  font-size: 25px;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
+  font-weight: 700;
+  line-height: 50px;
+  text-transform: uppercase;
+}
 
 .ui.button.plus {
   width: 40px;
