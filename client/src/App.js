@@ -3,8 +3,8 @@ import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
 import Timer from './components/Timer';
-import LongActivityGenerator from "./components/longActivityGenerator";
-import ShortActivtyGenerator from "./components/shortActivityGenerator";
+import LongActivityGenerator from "./components/LongActivityGenerator";
+import ShortActivtyGenerator from "./components/ShortActivityGenerator";
 
 function App () {
 
@@ -12,7 +12,7 @@ function App () {
   const [sessionLength, setSessionLength] = useState(1500)
   const [intervalLength, setIntervalLength] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
-  const [currIntervalType, setCurrIntervalType] = useState('PomoSession');    //For Session or Break, start in session
+  const [currIntervalType, setCurrIntervalType] = useState('Session');    //For Session or Break, start in session
 
   // Long activity generator
   const [longActivity, setLongActivity] = useState(null);
@@ -122,9 +122,7 @@ function App () {
   //Timer implementation, combine session and break
   //Timer starts if the intervallength is not null
   const timerStarted = intervalLength != null;
- //Handle Reset Button
-  //Handle Reset Button
-  
+
   const clickStartStop = () => {
       if(timerStarted) {
           //If in started, stop timer:
@@ -152,15 +150,15 @@ function App () {
                   //If session:
                       //Switch to break
                           //setTimeLeft to breakLength
-                  if(currIntervalType === 'PomoSession') {
-                      setCurrIntervalType('PomoBreak');
+                  if(currIntervalType === 'Session') {
+                      setCurrIntervalType('Break');
                       setTimeLeft(breakLength);
                   }
                   //Switch to break:
                       //Switch to session
                           //setTimeLeft to sessionLength
-                  else if(currIntervalType === 'PomoBreak') {
-                      setCurrIntervalType('PomoSession');
+                  else if(currIntervalType === 'Break') {
+                      setCurrIntervalType('Session');
                       setTimeLeft(sessionLength);
                   }
               })
@@ -169,15 +167,17 @@ function App () {
       }
   }
 
+  //Handle Reset Button
   const clickReset = () => {
     //TODO
     //set intervalLength to null
     //reset session length to 25 minutes,=
     //reset break length to 5 minutes
     //reset timer to 25 minutes (initial values)
+
     clearInterval(intervalLength);
     setIntervalLength(null);
-    setCurrIntervalType('PomoSession');
+    setCurrIntervalType('Session');
     setSessionLength(60 * 25);
     setBreakLength(60 * 5);
     setTimeLeft(60 * 25);
@@ -195,44 +195,42 @@ function App () {
 
 
 
-  return (
-    <main>
-      <h2>PomoBreak</h2>
-      <section className='interval-container'>
-      <BreakInterval
-      breakLength={breakLength}
-      reduceBreakOneMinute={reduceBreakOneMinute}
-      increaseBreakOneMinute={increaseBreakOneMinute}
-      clockFormat={clockFormat} />
-      
-      <LongActivityGenerator 
+  return <div className='App'>
+    <div className = 'timecontainer'>
+    <BreakInterval
+    breakLength={breakLength}
+    reduceBreakOneMinute={reduceBreakOneMinute}
+    increaseBreakOneMinute={increaseBreakOneMinute}
+    clockFormat={clockFormat} />
+
+  <Sessioninterval
+    sessionLength={sessionLength}
+    reduceSessionOneMinute={reduceSessionOneMinute}
+    increaseSessionOneMinute={increaseSessionOneMinute}
+    clockFormat={clockFormat} />
+
+<Timer 
+    sessionLength={sessionLength}
+    breakLength={breakLength}
+    timerLabel={currIntervalType}
+    clickStartStop={clickStartStop}
+    timeLeft={timeLeft}
+    startButtonLabel={timerStarted? 'Stop' : 'Start'}
+    clockFormat={clockFormat}
+     />
+   <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button> 
+
+    </div>
+
+    <LongActivityGenerator 
    generate={generateLongActivity}
    activity={longActivity}
     />
- 
-
-    <Sessioninterval
-      sessionLength={sessionLength}
-      reduceSessionOneMinute={reduceSessionOneMinute}
-      increaseSessionOneMinute={increaseSessionOneMinute}
-      clockFormat={clockFormat} />
-      </section>
-      <Timer
-   sessionLength={sessionLength}
-   breakLength={breakLength}
-   timerLabel={currIntervalType}
-   clickStartStop={clickStartStop}
-   timeLeft={timeLeft}
-   startButtonLabel={timerStarted? 'Stop' : 'Start'}
-   clockFormat={clockFormat}
-   clickReset={clickReset}
-    />
-
-
-
-    </main>
-  )
+  </div>
+  
   
 }
+
+// Will display random long activity ^^ switch to "short..." to display random short activity 
 
 export default App

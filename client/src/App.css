@@ -59,6 +59,7 @@ h2{
 }
 .longact-text {
   color: orange; 
+  margin: 25em;
 }
 .timer-container{
   border: 3px solid #161D6F;
