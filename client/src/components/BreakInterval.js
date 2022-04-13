@@ -9,15 +9,19 @@ const Breakinterval = (props) => {
   } = props;
   
   return (
-    <div>
-      <h2 id="break-label">Break</h2>
-      <h3 id='break-length'>{clockFormat(breakLength)} mins</h3>
-      <div className='row'>
+    <section>
+      <h4>Break</h4>
+         <section class = 'intervals'>
       <button class = "ui button plus" id='break-reduce' onClick={reduceBreakOneMinute}>-</button>
+      <h5 id='break-length'>{clockFormat(breakLength)} </h5>
       <button  class= "ui button plus" id='break-increase' onClick={increaseBreakOneMinute}>+</button>
-      </div>
+      </section>
+    </section>
+
+   
      
-    </div>
+     
+    
   )
 };
 
