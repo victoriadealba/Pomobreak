@@ -90,6 +90,23 @@ h2{
   text-transform: uppercase;
 }
 
+.ui.button:hover{
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  margin: 0 15px;
+  padding:0vh;
+  background:#fff587;
+  color: rgb(255, 255, 255); 
+  border-radius: 35px;
+  font-size: 20px;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
+  font-weight: 700;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
 .ui.button.start{
   width: 70px;
   height: 70px;
@@ -107,6 +124,27 @@ h2{
   line-height: 50px;
   text-transform: uppercase;
 }
+
+.ui.button.start:hover{
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  margin: 0 15px;
+  margin-bottom: 20px;
+  padding: 0;
+  background:#fff587;
+  color: rgb(255, 255, 255); 
+  border-radius: 35px;
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+
+
 .ui.button.activity{
   width: 100px;
   height: 100px;
@@ -115,6 +153,24 @@ h2{
   margin-bottom: 15%;
  
   background:#98DED9;
+  color: rgb(255, 255, 255); 
+  border-radius: 50px;
+  font-size: 25px;
+  -webkit-text-stroke: 1px #161D6F;
+  font-family: Impact, fantasy;
+  font-weight: 700;
+  line-height: 50px;
+  text-transform: uppercase;
+}
+
+.ui.button.activity:hover{
+  width: 100px;
+  height: 100px;
+  padding:0vh;
+  margin-top:15%;
+  margin-bottom: 15%;
+ 
+  background:#fff587;
   color: rgb(255, 255, 255); 
   border-radius: 50px;
   font-size: 25px;
@@ -140,3 +196,17 @@ h2{
   text-transform: uppercase;
 }
 
+.ui.button.plus:hover {
+  width: 40px;
+  height: 40px;
+  padding:0;
+  background:#eb69f7;
+  color: rgb(255, 255, 255); 
+  border-radius: 20px;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 30px;
+  display:inline-block;
+  text-transform: uppercase;
+}

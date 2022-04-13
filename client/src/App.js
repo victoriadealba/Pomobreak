@@ -226,8 +226,8 @@ function App () {
    startButtonLabel={timerStarted? 'Stop' : 'Start'}
    clockFormat={clockFormat}
    clickReset={clickReset}
+   
     />
-
 
 
     </main>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Timer = (props) => {
     const {
@@ -7,10 +7,12 @@ const Timer = (props) => {
         startButtonLabel,
         timeLeft,
         clockFormat,
-        clickReset
+        clickReset,
+        clickHideTimer
     } = props;
 
   return (
+  
     <section>
        <section class = 'timer-container'>
       
@@ -21,12 +23,10 @@ const Timer = (props) => {
           {startButtonLabel}
       </button>
       <button class = "ui button" id="reset-button" onClick={clickReset}>Reset</button>
-      
-
-  
+      <button class = "ui button hide" id="hide-button" onClick={clickHideTimer}>Hide</button>      
       
      
-    ` </section>
+     </section>
 
 
     </section>
