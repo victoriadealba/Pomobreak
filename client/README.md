@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Libraries Needed
+
+In the client folder of the project directory, run:
+
+### `npm install`
+
+to install necessary libraries run scripts. 
+
 ## Available Scripts
 
 In the client folder of the project directory, you can run:
