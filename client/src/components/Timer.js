@@ -19,7 +19,7 @@ const Timer = (props) => {
       <h4 id='timer-label'>{timerLabel}</h4>
       <button class="hideTimer" id='time-left'>{clockFormat(timeLeft)}</button>
 
-      <h7> Click the timer to hide it </h7>
+      <h7> CLICK TIMER TO HIDE </h7>
      
       <button class= "ui button start" id='start-stop' onClick={clickStartStop}>
           {startButtonLabel}
