@@ -104,12 +104,12 @@ function App () {
       //Audio Notifications!!
       audioNotif.current.play();
       //Change Session to Break, Break to Session
-      if (currIntervalType === 'Session')
+      if (currIntervalType === 'PomoSession')
       {
         //If going from Break to Session, Break cycle completed,
           //Keep track of break count,
             //After two short breaks switch to longBreak.
-        setCurrIntervalType('Break');
+        setCurrIntervalType('PomoBreak');
         if(longBreakCounter === 2)
         {
           setTimeLeft(longBreakLength);
@@ -121,7 +121,7 @@ function App () {
         }
       } else
       {
-        setCurrIntervalType("Session");
+        setCurrIntervalType("PomoSession");
         setTimeLeft(sessionLength);
         setLongBreakCounter(longBreakCounter + 1);
       }
