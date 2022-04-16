@@ -196,7 +196,7 @@ function App () {
                       setTimeLeft(sessionLength);
                   }
               })
-          }, 10);    //<-- SET ME BACK TO 1000 AFTER TESTING
+          }, 1000);    //<-- SET ME BACK TO 1000 AFTER TESTING
           setIntervalLength(currIntervalLength);
       }
   }
