@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-
 const Timer = (props) => {
     const {
         timerLabel,

@@ -13,6 +13,7 @@ function App () {
   const [intervalLength, setIntervalLength] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
   const [currIntervalType, setCurrIntervalType] = useState('PomoSession');    //For Session or Break, start in session
+  const [breakLength, setBreakLength] = useState(300);
 
   // Long activity generator
   const [longActivity, setLongActivity] = useState(null);
@@ -92,6 +93,22 @@ function App () {
     setTimeLeft(sessionLength);
 }, [/*dependencies*/ sessionLength])
 
+  //Listening for timeLeft changes => track change from session to break
+  useEffect(() =>{
+    if (timeLeft === 0) 
+    {
+      //Change Session to Break, Break to Session
+      if (currIntervalType === 'Session')
+      {
+        setCurrIntervalType('Break');
+        setTimeLeft(breakLength);
+      } else
+      {
+        setCurrIntervalType("Session");
+        setTimeLeft(sessionLength);
+      }
+    }
+  }, [timeLeft,currIntervalType,breakLength,sessionLength]);
 
   //Reduce timer by one minute, note this is in seconds.
   const reduceSessionOneMinute = () => {
@@ -106,8 +123,6 @@ function App () {
   }
   
   //Break Interval Session Implementation, identical functionality as Session Interval
-  const [breakLength, setBreakLength] = useState(300)
-
   const reduceBreakOneMinute = () => {
     const newLength = breakLength - 60;
      if(newLength > 0) {
@@ -164,7 +179,7 @@ function App () {
                       setTimeLeft(sessionLength);
                   }
               })
-          }, 100);    //<-- SET ME BACK TO 1000 AFTER TESTING
+          }, 10);    //<-- SET ME BACK TO 1000 AFTER TESTING
           setIntervalLength(currIntervalLength);
       }
   }

@@ -1,5 +1,3 @@
-import {react} from 'react'
-
 const ShortActivityGenerator = (props) => {
     const {
         generate,
