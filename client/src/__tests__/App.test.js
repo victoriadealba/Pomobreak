@@ -45,7 +45,7 @@ it('Timer Label Test: Renders as Break After Working Session', () => {
     jest.useFakeTimers();
     startButton.simulate('click');
     act(() => {
-        jest.advanceTimersByTime(100 * 60 * 26); // <= CHANGE ME TO 1000 WHEN REVERTING TO NORMAL TIMER
+        jest.advanceTimersByTime(100 * 60 * 26);
     })
     jest.useRealTimers();
     expect(timerLabel.text()).toEqual('Break');
@@ -58,7 +58,7 @@ it('Timer Label Test: Renders as Session After Working Session & Break', () => {
     jest.useFakeTimers();
     startButton.simulate('click');
     act(() => {
-        jest.advanceTimersByTime(100 * 60 * 26 + 100 * 60 * 6); // <= CHANGE ME TO 1000 WHEN REVERTING TO NORMAL TIMER
+        jest.advanceTimersByTime(1000 * 60 * 26 + 1000 * 60 * 6);
     })
     jest.useRealTimers();
     expect(timerLabel.text()).toEqual('Session');
