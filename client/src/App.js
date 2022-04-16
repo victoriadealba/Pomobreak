@@ -3,17 +3,20 @@ import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
 import Timer from './components/Timer';
-import LongActivityGenerator from "./components/LongActivityGenerator";
-import ShortActivtyGenerator from "./components/ShortActivityGenerator";
+import ActivityGenerator from './components/ActivityGenerator';
 
 function App () {
 
   //Session Interval Prop Implementation
-  const [sessionLength, setSessionLength] = useState(1500)
+  const [sessionLength, setSessionLength] = useState(60 * 25)
   const [intervalLength, setIntervalLength] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
   const [currIntervalType, setCurrIntervalType] = useState('PomoSession');    //For Session or Break, start in session
   const [breakLength, setBreakLength] = useState(300);
+
+  const [longBreakLength, setLongBreakLength] = useState(60 * 15);  //Long Break init to 15min, long break always short break +10min.
+  const [longBreakCounter, setLongBreakCounter] = useState(0);  //Switch to Long Break every two short breaks
+  const [activityType,setActivityType] = useState(false);       //false=>short activity; true=>long activity, start with short activities
 
   // Long activity generator
   const [longActivity, setLongActivity] = useState(null);
@@ -100,15 +103,27 @@ function App () {
       //Change Session to Break, Break to Session
       if (currIntervalType === 'Session')
       {
+        //If going from Break to Session, Break cycle completed,
+          //Keep track of break count,
+            //After two short breaks switch to longBreak.
         setCurrIntervalType('Break');
-        setTimeLeft(breakLength);
+        if(longBreakCounter === 2)
+        {
+          setTimeLeft(longBreakLength);
+          setActivityType(true);
+          setLongBreakCounter(0);
+        } else
+        {
+          setTimeLeft(breakLength);
+        }
       } else
       {
         setCurrIntervalType("Session");
         setTimeLeft(sessionLength);
+        setLongBreakCounter(longBreakCounter + 1);
       }
     }
-  }, [timeLeft,currIntervalType,breakLength,sessionLength]);
+  }, [timeLeft,currIntervalType,breakLength,sessionLength,longBreakCounter,longBreakLength]);
 
   //Reduce timer by one minute, note this is in seconds.
   const reduceSessionOneMinute = () => {
@@ -127,11 +142,13 @@ function App () {
     const newLength = breakLength - 60;
      if(newLength > 0) {
       setBreakLength(newLength);
+      setLongBreakLength(longBreakLength - 60);
      }
   }
 
   const increaseBreakOneMinute = () => {
     setBreakLength(breakLength + 60);
+    setLongBreakLength(longBreakLength + 60);
   }
 
   //Timer implementation, combine session and break
@@ -185,17 +202,15 @@ function App () {
   }
 
   const clickReset = () => {
-    //TODO
-    //set intervalLength to null
-    //reset session length to 25 minutes,=
-    //reset break length to 5 minutes
-    //reset timer to 25 minutes (initial values)
     clearInterval(intervalLength);
     setIntervalLength(null);
     setCurrIntervalType('PomoSession');
+    setLongBreakCounter(0);
+    setLongBreakLength(60 * 15);
     setSessionLength(60 * 25);
     setBreakLength(60 * 5);
     setTimeLeft(60 * 25);
+    setActivityType(false);
   }
 
   //Generate Random Long activity
@@ -220,11 +235,10 @@ function App () {
       increaseBreakOneMinute={increaseBreakOneMinute}
       clockFormat={clockFormat} />
       
-      <LongActivityGenerator 
-   generate={generateLongActivity}
-   activity={longActivity}
-    />
- 
+
+    <ActivityGenerator
+    generate = {!activityType? generateShortActivity : generateLongActivity}
+    activity = {!activityType? shortActivity : longActivity} /> 
 
     <Sessioninterval
       sessionLength={sessionLength}
