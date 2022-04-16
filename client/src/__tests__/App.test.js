@@ -35,13 +35,13 @@ it('Reset Button Test: Renders as Reset', () => {
 it('Timer Label Test: Renders as Session', () => {
     const wrapper = mount(<App />);
     const label = wrapper.find('#timer-label');
-    expect(label.text()).toEqual('Session');
+    expect(label.text()).toEqual('PomoSession');
 })
 
 it('Session Length Test: Defaults to 25:00', () => {
     const wrapper = mount(<App />);
     const label = wrapper.find('#session-length');
-    expect(label.text()).toEqual('25:00');
+    expect(label.text()).toEqual('25:00 ');
 })
 
 it('Session Length Test: Can Decrease and Increase Timer', () => {
@@ -50,10 +50,10 @@ it('Session Length Test: Can Decrease and Increase Timer', () => {
     const decButton = wrapper.find('#session-reduce');
     const incButton = wrapper.find('#session-increase');
     decButton.simulate('click');
-    expect(label.text()).toEqual('24:00');
+    expect(label.text()).toEqual('24:00 ');
     incButton.simulate('click');
     incButton.simulate('click');
-    expect(label.text()).toEqual('26:00');
+    expect(label.text()).toEqual('26:00 ');
 })
 
 it('Session Length Test: Session Doesn\'t Allow Negative Value', () => {
@@ -63,7 +63,7 @@ it('Session Length Test: Session Doesn\'t Allow Negative Value', () => {
     for(let i = 0; i < 30; i++) {
         decButton.simulate('click');
     }
-    expect(label.text()).toEqual('1:00');
+    expect(label.text()).toEqual('1:00 ');
 })
 
 it('Timer Test: Defaults to 25:00', () => {
@@ -79,7 +79,7 @@ it('Timer Test: Minutes Decrement after 60 seconds', () => {
     jest.useFakeTimers();
     startButton.simulate('click');
     act(() => {
-        jest.advanceTimersByTime(100 * 60); // <= CHANGE ME TO 1000 WHEN REVERTING TO NORMAL TIMER
+        jest.advanceTimersByTime(1000 * 60);
     })
     jest.useRealTimers();
     expect(time.text()).toEqual('24:00');
@@ -93,8 +93,8 @@ it('Timer Test: Timer Equals Break Length After Working Session', () => {
     jest.useFakeTimers();
     startButton.simulate('click');
     act(() => {
-        jest.advanceTimersByTime(100 * 60 * 26); // <= CHANGE ME TO 1000 WHEN REVERTING TO NORMAL TIMER
+        jest.advanceTimersByTime(1000 * 60 * 26);
     })
     jest.useRealTimers();
-    expect(time.text()).toEqual(breakLength.text());
+    expect(time.text() + " ").toEqual(breakLength.text());
 })
