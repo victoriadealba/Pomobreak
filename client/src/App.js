@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './App.css';
 import BreakInterval from './components/BreakInterval';
 import Sessioninterval from './components/SessionInterval';
@@ -8,6 +8,7 @@ import ActivityGenerator from './components/ActivityGenerator';
 function App () {
 
   //Session Interval Prop Implementation
+  const audioNotif = useRef(null);
   const [sessionLength, setSessionLength] = useState(60 * 25)
   const [intervalLength, setIntervalLength] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLength);
@@ -100,6 +101,8 @@ function App () {
   useEffect(() =>{
     if (timeLeft === 0) 
     {
+      //Audio Notifications!!
+      audioNotif.current.play();
       //Change Session to Break, Break to Session
       if (currIntervalType === 'Session')
       {
@@ -211,6 +214,7 @@ function App () {
     setBreakLength(60 * 5);
     setTimeLeft(60 * 25);
     setActivityType(false);
+    audioNotif.current.load();
   }
 
   //Generate Random Long activity
@@ -257,6 +261,13 @@ function App () {
    clickReset={clickReset}
    
     />
+
+    <div>
+    <audio  ref={audioNotif}> 
+      <source src='https://vgmsite.com/soundtracks/animal-crossing-new-leaf/yfjzqnae/176%20-%20Award%20Fanfare.mp3' type='audio/mpeg'/>
+    </audio>
+    </div>
+
 
 
     </main>
