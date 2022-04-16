@@ -10,13 +10,19 @@ const Sessioninterval = (props) => {
 
 
   return (
-    <div>
-      <p id="session-label">PomoSession</p>
-      <p id='session-length'>{clockFormat(sessionLength)}</p>
+    <section>
+      <h4>Session</h4>
+       <section class = 'intervals'>
+     
+      <button class = "ui button plus" id='session-reduce' onClick={reduceSessionOneMinute}>-</button>
+      <h5 id='session-length'>{clockFormat(sessionLength)} </h5>
+      <button class = "ui button plus" id='session-increase' onClick={increaseSessionOneMinute}>+</button>
+    </section>
 
-      <button id='session-reduce' onClick={reduceSessionOneMinute}>-</button>
-      <button id='session-increase' onClick={increaseSessionOneMinute}>+</button>
-    </div>
+    </section>
+   
+      
+   
   )
 };
 
